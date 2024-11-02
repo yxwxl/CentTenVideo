@@ -1,23 +1,36 @@
-# 具体的请求 api 实现
+# 具体的请求 API 实现
+
+---
 
 ## getAddressList.py
 
-### 默认使用 filterSearchAll 输入页面链接 https://v.qq.com/x/cover/mzc002007sqbpce/r4100zvgz9i.html
+- **默认方法**：`filterSearchAll`
+  - **输入**：页面链接，例如 `https://v.qq.com/x/cover/mzc002007sqbpce/r4100zvgz9i.html`
+  - **注意**：页面链接中的 `html` 后的问号部分若存在需去除，以返回所有有效的 `vid`，避免预告、彩蛋、采访等无关内容。
+  - **searchAll**：不去除上述部分。
 
-### 注意页面链接 html 问号后面如果有要去掉 返回所有的 vid 去预告,彩蛋,采访等无关部分
-
-### searchAll 不去除上面部分
+---
 
 ## loadHotVideo.py
 
-### getChannels 获取所有频道 动漫,电影,电视剧等...
+- **方法**：`getChannels`
 
-### getVideoList 获取对应频道视频列表,一次请求 21 个视频
+  - **功能**：获取所有频道，如动漫、电影、电视剧等。
+
+- **方法**：`getVideoList`
+  - **功能**：获取对应频道的视频列表，一次请求返回 21 个视频。
+
+---
 
 ## searchBox.py
 
-### 搜索框的 api,可以自行选择搜索内容,输入搜索文本,返回对应的视频列表,同腾讯的搜索框
+- **功能**：搜索框 API，可自定义搜索内容。
+  - **输入**：搜索文本，返回与搜索内容相关的视频列表（类似腾讯视频的搜索框功能）。
 
-## proxy_script.py 需要配合 mitmdump 使用,不熟悉的建议不要使用,要求配置配置很多东西
+---
 
-### 使用命令 mitmdump -s util/proxy_script.py 使用前开启网络代理 127.0.0.1 8000
+## proxy_script.py
+
+- **说明**：需要配合 `mitmdump` 使用。由于配置较复杂，不熟悉的用户不建议使用。
+  - **使用命令**：`mitmdump -s util/proxy_script.py`
+  - **前置要求**：启用网络代理 `127.0.0.1:8000`（此端口可根据需要进行调整）。
